@@ -1,0 +1,120 @@
+﻿@model PacejetMini.Models.DemoModelView
+@{
+    ViewData["Title"] = "Demo";
+        Layout = "_LayoutPage";
+}
+
+<div class="container" style="padding-top: 50px">
+@using (Html.BeginForm("Demo", "Rate"))
+{  
+
+<div class="col-md-4">
+    From your location<i class="fa fa-building fa-5x pull-right" aria-hidden="true"></i>
+    <div class="clearfix"></div>
+    <h2><span class="fa fa-address-card"></span> Origin Address</h2>
+	<div class="form-group">
+    <label asp-for="OriginAddress1"></label>
+    <input asp-for="OriginAddress1" placeholder="1 Main St." class="form-control" value="5921 Big Cypress Dr" />
+  </div>
+    <div class="form-group">
+    <label asp-for="OriginAddress2"></label>
+    <input asp-for="OriginAddress2" placeholder="Suite 100" class="form-control" />
+  </div>
+      <div class="form-group">
+    <label asp-for="OriginCity"></label>
+    <input asp-for="OriginCity" placeholder="New York" class="form-control" value="New Albany" />
+  </div>
+      <div class="form-group">
+    <label asp-for="OriginState"></label>
+    <select asp-for="OriginState" class="form-control"><option>Select..</option></select>
+  </div>
+      <div class="form-group">
+    <label asp-for="OriginPostal"></label>
+    <input asp-for="OriginPostal" placeholder="10001" class="form-control" value="43054" />
+  </div>
+      <div class="form-group">
+    <label asp-for="OriginCountry"></label>
+    <select asp-for="OriginCountry" placeholder="USA" class="form-control"></select>
+  </div>
+   <div class="form-group">
+	<label asp-for="OriginResidential"></label>
+	<div class="material-switch pull-right">
+	    <input asp-for="OriginResidential" type="checkbox" />    
+	    <label for="OriginResidential" class="label-default"></label>
+	</div>
+    
+    
+  </div>
+ </div>
+ <div class="col-md-2 hidden-md hidden-sm hidden-sm hidden-xs" style="text-align:center; height: 563px"><span class="fa fa-truck fa-5x" style="-moz-transform: scale(-1, 1);-webkit-transform: scale(-1, 1);-o-transform: scale(-1, 1);-ms-transform: scale(-1, 1);transform: scale(-1, 1);"></span></div>
+<div class="col-md-4">
+    <i class="fa fa-home fa-5x" aria-hidden="true"></i><span class="pull-right">To theirs</span>
+    <h2><span class="fa fa-address-card"></span> Destination Address</h2>
+    <div class="form-group">
+    <label asp-for="DestinationAddress1"></label>
+    <input asp-for="DestinationAddress1" placeholder="1 Main St." class="form-control" value="16401 Hartford Rd" />
+  </div>
+    <div class="form-group">
+    <label asp-for="DestinationAddress2"></label>
+    <input asp-for="DestinationAddress2" placeholder="Suite 100" class="form-control" value="" />
+  </div>
+      <div class="form-group">
+    <label asp-for="DestinationCity"></label>
+    <input asp-for="DestinationCity" placeholder="New York" class="form-control" value="Sunbury" />
+  </div>
+      <div class="form-group">
+    <label asp-for="DestinationState"></label>
+    <select asp-for="DestinationState" class="form-control"><option>Select..</option></select>
+  </div>
+      <div class="form-group">
+    <label asp-for="DestinationPostal"></label>
+    <input asp-for="DestinationPostal" placeholder="10001" class="form-control" value="43074" />
+  </div>
+      <div class="form-group">
+    <label asp-for="DestinationCountry"></label>
+    <select asp-for="DestinationCountry" placeholder="USA" class="form-control"></select>
+  </div>
+   <div class="form-group">
+    <label asp-for="DestinationResidential"></label>
+    <div class="material-switch pull-right">
+        <input asp-for="DestinationResidential" type="checkbox" />    
+        <label for="DestinationResidential" class="label-default"></label>
+    </div>
+    
+  </div>
+ </div>
+
+  <div class="clearfix"></div>
+ <div class="col-lg-12">
+    <h2><span class="fa fa-archive"></span> Package Information</h2>
+    @foreach(var package in Model.Packages){
+        <div class="row">
+	        <div class="col-md-2">Length</div>
+	        <div class="col-md-2">Height</div>
+	        <div class="col-md-2">Width</div>
+	        <div class="col-md-2">Weight</div>
+	        <div class="clearfix"></div>
+	        <div class="col-md-2"><input asp-for="@package.Length" class="form-control" value="2" /></div>
+	        <div class="col-md-2"><input asp-for="@package.Height" class="form-control" value="2" /></div>
+	        <div class="col-md-2"><input asp-for="@package.Width" class="form-control" value="2" /></div>
+	        <div class="col-md-2"><input asp-for="@package.Weight" class="form-control" value="20" /></div>
+            <div class="col-md-2">
+                <select id="WUOM" class="form-control">
+                    <option selected="selected" value="LB">LB</option>
+				    <option value="KG">KG</option>
+				    <option value="OZ">OZ</option>
+				    <option value="G">G</option>
+                </select>
+            </div>
+        </div>
+    }
+ </div>
+ <p class="clearfix">&nbsp;</p>
+ 
+ <div class="col-md-12">
+  <button type="button" class="btn btn-success" id="btnRunRate">Rate</button>
+ </div>
+
+}
+	
+</div>
